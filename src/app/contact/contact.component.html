@@ -1,0 +1,64 @@
+<div class="col-xs-12 col-lg-12" [ngStyle]="{'min-height' : getHeight(),'min-width': getWidth()}" id="contactbox">
+<div class="container-fluid">
+  <div class="row">
+    <h2 id="titlecontact">Contactez-Moi</h2>
+  </div>
+  <div class="row" id="formcontactcontainer">
+    <div id="contactleftbox" class="col-xs-12 col-md-6 col-lg-6">
+        <h3 class="cordonnes"><i  class="kk  kk-info"></i> </h3>
+          <table id="table"  class="table table-borderless" *ngIf="myInfos">
+            <tr>
+              <td><span class="tdtitle"><strong><i class="inficon kk kk-iphone-6-white-front"></i>Tel : </strong></span></td>
+              <td><span class="tdcontent">{{myInfos.tel}}</span></td>
+            </tr>
+            <tr>
+              <td><span class="tdtitle"><strong><i class="inficon kk kk-at"></i>Email : </strong></span></td>
+              <td><a href="mailto:ousabdelwahed@gmail.com"><span class="tdcontent">{{myInfos.email}}</span></a></td>
+            </tr>
+            <tr>
+              <td><span class="tdtitle"><strong><i class="inficon kk kk-home"></i>Adresse : </strong></span></td>
+              <td><span class="tdcontent">{{myInfos.address}}</span></td>
+            </tr>
+            <tr>
+              <td><span class="tdtitle"><strong><i class="inficon kk kk-barcode "></i>Code Postale : </strong></span></td>
+              <td><span class="tdcontent">{{myInfos.zip}}</span></td>
+            </tr>
+            <tr>
+              <td><strong><i class="inficon kk kk-Social-Network "></i>médias</strong></td>
+              <td>
+                <a target="_blank" href="https://www.facebook.com/oussama.j.abdelwahed"><i class="soc kk kk-Facebook"></i></a>
+                <a target="_blank" href="https://plus.google.com/u/0/102106564568838992619"><i class="soc kk kk-Google-Plus"></i></a>
+                <a target="_blank" href="https://github.com/oussamaAbdelwahed"><i class="soc kk kk-GitHub"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/oussama-abdelwahed-30480b12a/"><i class="soc kk kk-LinkedIn"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td></td>
+            </tr>
+          </table>
+    </div>
+    <div class="col-lg-1 hidden-xs hidden-sm"><p></p></div>
+<form [formGroup]="emailForm" (ngSubmit)="onSubmitEmailForm()" id="sendingmailform" class="form form-horizontal   col-lg-4 col-md-4 col-xs-12 text-center">
+        <h3 class="cordonnes" id="emailtitlesend"><i class="kk  kk-at"></i> </h3>
+        <div class="form-group">
+           <input formControlName="emailSubject" autocomplete="none" placeholder="sujet de l'email" type="text" name="subject" id="subject" class="form-control"/>
+          </div>
+        <div class="form-group">
+          <input formControlName="emailAddress" autocomplete="none" placeholder="votre email" type="email" name="email" id="email" class="form-control" />
+          <span class="text-danger pull-right" *ngIf="emailForm.controls.emailAddress.touched && emailForm.controls.emailAddress.invalid">adresse email invalide</span>
+        </div>
+        <div class="form-group">
+            <textarea formControlName="emailContent" placeholder="contenu de l'email ..." autocomplete="none" id="emailcontent" name="emailcontent"></textarea>
+<span class="text-danger pull-right" *ngIf="emailForm.controls.emailContent.touched && emailForm.controls.emailContent.invalid">veuillez saisir un message complet</span>
+          </div>
+        <div class="form-group">
+          <button [disabled]="emailForm.invalid" id="submitbutton" type="submit" name="envoyer" value="Envoyer" class="btn btn-success col-xs-12">Envoyer <i style="color:white;margin-left:4px;" class="kk kk-send"></i></button>
+       </div> 
+      </form>
+  </div>
+  <div class="row" id="divsocialmediaicons"></div>
+</div>
+</div>
+
+

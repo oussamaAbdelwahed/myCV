@@ -1,0 +1,32 @@
+#footer{
+    /*background-color: #212223;*/
+     position: relative;
+     width: 100%;
+     background-color: #212121;
+     top: 100%;
+     left: 0px;
+     /*height: 200px;*/
+     
+}
+
+#firstpcopyright{
+    margin-top: 30px;
+    //color: rgba(136, 84, 208, 1.0);
+    font-weight: bold;
+    color : white;
+    font-size: 14px;
+}
+.textcopyright {
+    color: white;
+    //color:rgba(136, 84, 208, 1.0);
+    font-size: 14px;
+    font-family: Arial,
+    Helvetica,
+    sans-serif;
+    font-weight: bold;
+    text-shadow: 5px 5px 20px rgba(0, 84, 208, 0.7);
+}
+
+#secondincopyright {
+    margin-bottom: 30px;
+}

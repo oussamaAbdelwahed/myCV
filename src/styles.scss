@@ -1,0 +1,39 @@
+body {
+  overflow-x: hidden;
+  margin: 0px;
+}
+.table-borderless td,
+.table-borderless th {
+  border: 0 !important;  
+}
+#imginmodal{
+  position: relative;
+  height: 550px;
+  width : 100%;
+  margin: 0px;
+}
+#mymodalheadertext {
+  color:  #0984e3;
+  cursor: pointer;
+  text-decoration: underline;
+}
+#myModal {
+  z-index: 3500;
+}
+#maskforloading {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+}
+#loadingspinner {
+  position: absolute;
+  left: 43%;
+  top: 43%;
+  /*margin-right: 50%;*/
+}
+
+

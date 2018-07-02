@@ -1,0 +1,149 @@
+#skills{
+    //background-color: rgba(153, 128, 250, 0.3);
+    //background-color: rgba(196, 229, 56, 0.7);
+    //background-color: rgba(72, 52, 212, 0.7);
+    //background-color: rgba(99, 205, 218, 0.8);
+    background-image: url('../../assets/images//image1.jpg');
+}
+#titleskills {
+  font-size: 50px;
+  margin: 30px 0px 30px 0px;
+  color: white;
+  font-weight: bold;
+  font-family: 'Tangerine', arial, cursive;
+}
+#nextarrow,#previousarrow{
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flexboxcontainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:space-between;
+  align-items: center;
+  overflow: hidden;
+  align-content: center;
+  padding : 0px 10px 0px 10px;
+  cursor: pointer;
+ }
+ .flexitem{
+   height: 300px;
+   overflow: hidden;
+   align-self: center;
+   padding: 0px;
+   margin: 30px 0px 30px 0px;
+}
+
+.innerskillmask
+{
+  position: relative;
+  height:100%;
+  width: 100%;
+  margin: 0px;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(30, 39, 46, 0.9);
+  padding: 10px 10px 10px 10px;
+  z-index: 2999;
+}
+ .nextpreviousformobile {
+  position: relative;
+  margin: 0px;
+  width: 95%;
+  margin: auto;
+  display: flex;
+  top: 50%;
+  left: 0px;
+  background-color: rgba(255, 255, 255,0);
+  z-index: 112;
+}
+#previousarrowxs {
+  z-index: 300;
+  float: left;
+  font-size: 25px;
+}
+#nextarrowxs {
+  z-index: 300;
+  float: right;
+  font-size: 25px;
+}
+.innerskillmaskanimatedin {
+  animation-name: animIn;
+  animation-duration: 0.4s;
+  animation-iteration-count:1; 
+  animation-fill-mode: forwards;
+
+  -webkit-animation-name: animIn;
+  -webkit-animation-duration: 0.4s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+
+  -moz-animation-name: animIn;
+  -moz-animation-duration: 0.4s;
+  -moz-animation-iteration-count: 1;
+}
+
+.innerskillmaskanimatedout{
+  animation-name: animOut;
+  animation-duration: 0.6s;
+  animation-iteration-count:1;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-name: animOut;
+  -webkit-animation-duration: 0.4s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+
+  -moz-animation-name: animOut;
+  -moz-animation-duration: 0.4s;
+  -moz-animation-iteration-count: 1;
+}
+.imgcertif
+{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  z-index: 10;
+}
+.certifdetailstext{
+  margin-top:20px;
+  font-size:17px;
+  color:white;
+  /*font-family:'Times New Roman',Times,serif;*/
+  font-family: Arial, Helvetica, sans-serif;
+  line-break: loose;
+}
+
+.certiffromhighlight{
+  color:#8a2be2;
+}
+
+@keyframes animIn{
+  0%{
+    margin-top: 300px;
+  }100%{
+     margin-top: -300px;
+  }
+}
+
+@keyframes animOut {
+    0% {
+      margin-top: -300px;
+    }
+    100% {
+      margin-top: 300px;
+    }
+}
+@media screen and(max-width : 450px) {
+   #skills {
+   background-repeat: no-repeat;
+   }
+}
+
+

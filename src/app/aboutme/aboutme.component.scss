@@ -1,0 +1,53 @@
+#aboutme {
+    margin-top: 50px;
+   background: rgba(255, 255, 255, 1);
+   background: -moz-linear-gradient(45deg, rgba(255, 255, 255, 1) 17%, rgba(251, 251, 251, 1) 35%, rgba(246, 246, 246, 1) 63%, rgba(240, 240, 240, 1) 86%, rgba(237, 237, 237, 1) 100%);
+   background: -webkit-gradient(left bottom, right top, color-stop(17%, rgba(255, 255, 255, 1)), color-stop(35%, rgba(251, 251, 251, 1)), color-stop(63%, rgba(246, 246, 246, 1)), color-stop(86%, rgba(240, 240, 240, 1)), color-stop(100%, rgba(237, 237, 237, 1)));
+   background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 1) 17%, rgba(251, 251, 251, 1) 35%, rgba(246, 246, 246, 1) 63%, rgba(240, 240, 240, 1) 86%, rgba(237, 237, 237, 1) 100%);
+   background: -o-linear-gradient(45deg, rgba(255, 255, 255, 1) 17%, rgba(251, 251, 251, 1) 35%, rgba(246, 246, 246, 1) 63%, rgba(240, 240, 240, 1) 86%, rgba(237, 237, 237, 1) 100%);
+   background: -ms-linear-gradient(45deg, rgba(255, 255, 255, 1) 17%, rgba(251, 251, 251, 1) 35%, rgba(246, 246, 246, 1) 63%, rgba(240, 240, 240, 1) 86%, rgba(237, 237, 237, 1) 100%);
+   background: linear-gradient(45deg, rgba(255, 255, 255, 1) 17%, rgba(251, 251, 251, 1) 35%, rgba(246, 246, 246, 1) 63%, rgba(240, 240, 240, 1) 86%, rgba(237, 237, 237, 1) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1);
+}
+#titleabout {
+   margin: 50px 0px 50px 0px;
+   font-size: 50px;
+   color:black;
+   font-weight: bold;
+   font-family: 'Tangerine',Arial, Helvetica, sans-serif;
+}
+
+#io{
+    height: 500px;
+    width: 100%;
+    
+}
+
+.textme {
+    margin-top: 30px;
+    width: 100%;
+    word-wrap: break-word;
+    word-break: keep-all;
+    line-break: loose;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: black;
+}
+
+#technicalinfos {
+    margin-top: 15px;
+}
+.technicalli{
+  font-size: 20px;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 15px;
+  
+}
+#listofformations .technicalli {
+  color: #0984e3;
+  cursor: pointer;
+}
+#listofformations .technicalli:hover {
+    text-decoration: underline;
+}

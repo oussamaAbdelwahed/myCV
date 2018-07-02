@@ -1,0 +1,42 @@
+<div class="col-xs-12" id="skills" [ngStyle]="{'min-height' : getHeight(),'min-width': getWidth()}">
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-lg-offset-2 col-lg-8">
+      <h2 id="titleskills" class="text-center">Mes Compétences</h2>
+    </div>
+  </div>
+  <div class="row">
+<div class="container">
+<div id="certifscontainer" class="row  flexboxcontainer">
+   <div class="col-lg-1 hidden-xs" (click)="getPreviousCertifs()"><i id="previousarrow" class="kk kk-previous"></i></div>
+   <!-- <div id="certificationsinnercontainer"></div> -->
+  <ng-container *ngIf="isPc">
+    <div *ngFor="let certif of certifications" [id]="certif.id" class="col-lg-3 col-xs-12 flexitem">
+        <div  class="nextpreviousformobile visible-xs">
+            <i id="previousarrowxs" (click)="onClickPreviousCertif($event)" class="kk kk-previous"></i>
+            <i id="nextarrowxs" (click)="onClickNextCertif($event)" class="kk kk-next"></i>
+        </div>
+        <img class="imgcertif" [alt]="certif.alt" [src]="certif.src | safe:'resourceUrl'" id="crtf{{certif.name}}"/>
+        <div  class="innerskillmask"> 
+            <p class="certifdetailstext" [innerHTML]="certif.description"></p>
+            <button type="button" class="btn btn-info btnmodalshow" data-toggle="modal" data-target="#myModal">image en grande taille</button>
+        </div>
+    </div>
+ </ng-container>
+
+<div *ngIf="isMobile && currentCertif" id="containeronemobilecertif" class="col-lg-3 col-xs-12 flexitem">
+  <div class="nextpreviousformobile visible-xs">
+    <i id="previousarrowxs" (click)="onClickPreviousCertif()" class="kk kk-previous"></i>
+    <i id="nextarrowxs" (click)="onClickNextCertif()" class="kk kk-next"></i>
+  </div>
+  <img class="imgcertif" [alt]="currentCertif.alt" [src]="currentCertif.src | safe:'resourceUrl'" id="{{currentCertif.name}}" />
+  <div class="innerskillmask">
+    <p class="certifdetailstext" id="singlecertifdescription" [innerHTML]="currentCertif.description"></p>
+    <button type="button" class="btn btn-info btnmodalshow" data-toggle="modal" data-target="#myModal">image en grande taille</button>
+  </div>
+</div>
+
+    <div class="col-lg-1 hidden-xs" (click)="getNextCertifs()"><i id="nextarrow" class="kk kk-next"></i></div> 
+</div>
+ </div>
+</div>
+</div>

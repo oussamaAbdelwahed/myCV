@@ -1,0 +1,55 @@
+#technologymastery {
+    min-height: 500px;
+    width: 100%;
+   
+  
+}
+ .technologyicon  {
+     height: 80px;
+     width:80px;
+}
+
+.techlevel {
+  width: 200px;
+  padding: 1.5px 2px 1.5px 2px;
+  height: 20px;
+  border-radius: 42px 41px 41px 40px;
+  -moz-border-radius: 42px 41px 41px 40px;
+  -webkit-border-radius: 42px 41px 41px 40px;
+   border: solid 1px grey;
+}
+
+.flexingcontainer {
+    margin-bottom: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#techprincipalcont {
+   margin-top: 100px;
+}
+
+.techinnerbar {
+    text-align: center;
+  position: relative;
+  height: 100%;
+ background-color: rgba(0, 206, 201, 1.0);
+ border-radius: 42px 41px 41px 40px;
+ -moz-border-radius: 42px 41px 41px 40px;
+ -webkit-border-radius: 42px 41px 41px 40px;
+ 
+}
+.techimageuri {
+    height: 80px;
+    width: 80px;
+}
+.smalltechlevel {
+    text-align: center;
+    color: gray;
+    margin-left: 5px;
+    margin-bottom: 2px;
+
+}
+.technologyitem {
+    margin-bottom: 100px;
+}
