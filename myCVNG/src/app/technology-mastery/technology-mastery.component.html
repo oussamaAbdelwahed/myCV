@@ -1,0 +1,27 @@
+<div id="technologymastery" class="col-xs-12 col-lg-12">
+  <h1 id="titletechmastery" class="text-center">Technologies Maitrisées</h1>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12" id="techprincipalcont">
+      <div class="row">
+    <div *ngFor="let tech of techs" class="col-xs-12 col-lg-4 technologyitem">
+      <div class="row" class="flexingcontainer">
+        <div class="col-lg-3 col-xs-4">
+          <img class="techimageuri" [src]="tech.technology | safe: 'resourceUrl'" [alt]="tech.name"/>
+        </div>
+        <div class="col-lg-9 techlevel">
+          <div class="techinnerbar" [ngStyle]="{'width' : tech.level + '%'}">
+            <small class="smalltechlevel" >{{tech.level}} %</small>
+          </div>
+        </div>
+        </div>
+    </div>
+      
+    </div>
+   </div>
+  </div>
+</div>
+
+
+
+
+
