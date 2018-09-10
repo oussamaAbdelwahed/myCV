@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="section" class="col-xs-12 col-lg-offset-3 col-lg-6 col-lg-offset-3" style="margin-top:60px;">
+    <h1 class="text-center" style="margin-bottom:20px;">Ajouter Une Image</h1>
+    <form  (ngSubmit)="onSubmitForm()" [formGroup]="addImageForm" id="formAddImage" class="form form-horizontal">
+       <div class="form-group">
+         <label for="name">name : </label>
+         <input type="text" formControlName="name"  id="name" class="form-control"/>
+       </div>
+       <div class="form-group">
+         <label for="type">* type : </label>
+         <select  formControlName="type" class="form-control">
+           <option  *ngFor="let type of imageTypes"  value="{{type}}">{{type}}</option>
+         </select>
+       </div>
+       <div class="form-group">
+         <label for="show">* show : </label>
+         <input formControlName="show" type="number" id="show" max="1" min="0" class="form-control"/>
+       </div>
+       <div class="form-group">
+         <label for="alt">* alt : </label>
+         <input formControlName="alt" type="text" id="alt" class="form-control"/>
+       </div>
+       <div class="form-group">
+         <label for="description">* description : </label>
+         <textarea formControlName="description" rows="8" class="form-control" id="description"></textarea>
+       </div>
+       <div class="form-group">
+         <label for="image">* image : </label>
+         <input (change)="onChangeImage($event)" formControlName="image" type="file" id="image" class="form-control"/>
+         <img *ngIf="imageUrl" [src]="imageUrl | safe :'resourceUrl'" height="200" width="300"/>
+        </div>
+       <div class="form-group">
+         <button [disabled]="addImageForm.invalid" type="submit" id="addImageBtn" class="btn btn-primary">Valider</button>
+       </div>
+    </form>
+  </div>
+</div>

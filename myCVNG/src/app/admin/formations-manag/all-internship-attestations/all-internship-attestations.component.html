@@ -1,0 +1,33 @@
+<div class="row">
+  <section class="col-xs-12 col-lg-offset-3 col-lg-6 col-lg-offset-3" style="margin-top:60px;">
+    <h1 style="margin-bottom:40px;" class="text-center">Attestations Des Stages</h1>
+    <div class="row" *ngFor="let att of attestations" id="atte{{att.id}}">
+      <!-- -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h5 class="text-center">{{att.description}}</h5>
+        </div>
+        <div class="panel-body">
+          <table border="2">
+            <img *ngIf="!isDocument(att.name)" class="managed-attestation" [src]="att.proofDocument | safe: 'resourceUrl'" [alt]="att.description" />
+            <a *ngIf="isDocument(att.name)" target="_blank" [href]="att.proofDocument | safe: 'resourceUrl'"
+              download>telecharger le fichier</a>
+          </table>
+          <br><br>
+          <small>ajouté le : <b>{{att.createdAt | date}}</b></small>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-xs-6">
+              <button routerLink="/admin/dashboard/formations/{{att.id}}/edit" class="btn btn-warning pull-right"
+                id="edit-navbar-logo">modifier</button>
+            </div>
+            <div class="col-xs-6">
+              <button class="btn btn-danger" (click)="showModal(att.id)" id="delete-attestation">supprimer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

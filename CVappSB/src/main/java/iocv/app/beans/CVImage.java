@@ -12,6 +12,7 @@ import java.io.Serializable;
 
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.Date;
 
@@ -19,19 +20,12 @@ import java.util.Date;
 @Table(name = "images")
 public class CVImage implements Serializable{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     @Lob
     private byte[] image;
+
     private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
     @JsonProperty("type")
     @Enumerated(EnumType.STRING)
     @Column(name="image_type")
@@ -70,6 +64,13 @@ public class CVImage implements Serializable{
     @JsonProperty("src")
     public String getImageBase64() {
             return "data:image/jpeg;base64,"+new String(Base64.getEncoder().encode(this.image));
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setImageType(ImageType imageType) {
@@ -130,5 +131,22 @@ public class CVImage implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "CVImage{" +
+                "id=" + id +
+                ", image=" + Arrays.toString(image) +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", show=" + show +
+                ", extension='" + extension + '\'' +
+                ", createdAt=" + createdAt +
+                ", height=" + height +
+                ", width=" + width +
+                ", alt='" + alt + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

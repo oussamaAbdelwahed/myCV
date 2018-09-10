@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
 import { CVImageService } from '../webservices/cvimage.service';
-import { Subscription } from '../../../node_modules/rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
 import { CVImage } from '../models/cvimage';
 import { API_URL } from '../commontasks/imagetype.enum';
 import { isNullOrUndefined } from 'util';

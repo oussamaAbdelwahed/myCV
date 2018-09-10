@@ -5,7 +5,7 @@
       <div class="row">
     <div *ngFor="let tech of techs" class="col-xs-12 col-lg-4 technologyitem">
       <div class="row" class="flexingcontainer">
-        <div class="col-lg-3 col-xs-4">
+        <div class="col-lg-3 col-xs-4 techContainer">
           <img class="techimageuri" [src]="tech.technology | safe: 'resourceUrl'" [alt]="tech.name"/>
         </div>
         <div class="col-lg-9 techlevel">

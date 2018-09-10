@@ -1,0 +1,27 @@
+<div class="row">
+  <section class="col-xs-12 col-lg-offset-3 col-lg-6 col-lg-offset-3" style="margin-top:60px;">
+    <h1 style="margin-bottom:40px;" class="text-center">Tous Les Navbar Logos</h1>
+    <div class="row" *ngFor="let logo of logos" id="logo{{logo.id}}">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h5 class="text-center">{{logo.show ? "Exposé" : "Non Exposé"}}</h5>
+        </div>
+        <div class="panel-body">
+          <table border="2">
+            <img class="managed-logos" [src]="logo.src | safe: 'resourceUrl'" [alt]="logo.alt" />
+          </table>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-xs-6">
+              <button routerLink="/admin/dashboard/images/{{logo.id}}/edit" class="btn btn-warning pull-right" id="edit-navbar-logo">modifier</button>
+            </div>
+            <div class="col-xs-6">
+              <button class="btn btn-danger" (click)="showModal(logo.id)" id="delete-certification">supprimer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

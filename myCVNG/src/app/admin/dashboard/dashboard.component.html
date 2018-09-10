@@ -1,0 +1,85 @@
+<nav id="admin-navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" routerLink="" style="color:black;"><span class="glyphicon glyphicon-paperclip"></span> MON-CV</a>
+    </div>
+ <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li class="dropdown" routerLinkActive="active" style="cursor: pointer;">
+       <a  class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-picture"></span>
+       Images
+       <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li routerLinkActive="active"><a routerLink="images/navbar-logos">lister : 'NAVBAR_LOGO'</a></li>
+          <li routerLinkActive="active"><a routerLink="images/me-big-pictures">lister : 'ME_BIG_PICTURE'</a></li>
+          <li routerLinkActive="active"><a routerLink="images/certifications">lister : 'CERTIFICATION'</a></li>
+          <li routerLinkActive="active"><a routerLink="images/add">ajouter</a></li>
+        </ul>
+      </li>
+
+     <li class="dropdown" routerLinkActive="active" style="cursor: pointer;">
+        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-briefcase"></span>
+         Formations
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li routerLinkActive="active"><a routerLink="formations/diplomes">lister : 'DIPLOMA'</a></li>
+          <li routerLinkActive="active"><a routerLink="formations/internship-attestations">lister : 'INTERNSHIP_ATTESTATION'</a></li>
+          <li routerLinkActive="active"><a routerLink="formations/add">ajouter</a></li>
+        </ul>
+     </li>
+
+     <li class="dropdown" routerLinkActive="active" style="cursor: pointer;">
+      <a class="dropdown-toggle" data-toggle="dropdown" ><span class="glyphicon glyphicon-star"></span>
+      Technologies
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li routerLinkActive="active"><a routerLink="technologies">lister</a></li>
+        <li routerLinkActive="active"><a routerLink="technologies/add">ajouter</a></li>
+      </ul>
+     </li>
+
+    <li routerLinkActive="active"><a routerLink="informations/edit"><span class="glyphicon glyphicon-wrench"></span> Mes
+    Informations</a> </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li routerLinkActive="active"><a routerLink="/admin/login"><span class="glyphicon glyphicon-user"></span> Compte</a> </li>
+      <li routerLinkActive="active" style="cursor: pointer;"><a (click)="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+    </ul>
+</div>
+</div>
+</nav>
+
+<!-- Trigger the modal with a button 
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+-->
+
+<!-- Modal -->
+<div id="modalDeleteContent" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div id="modalContent" class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center"> Alerte <span class="glyphicon glyphicon-warning-sign"></span></h4>
+      </div>
+      <div class="modal-body">
+        <p>Voulez vous vraiment supprimer le contenu ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-danger" id="modalDeleteBtn" data-dismiss="modal">Supprimer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

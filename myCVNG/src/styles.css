@@ -35,5 +35,17 @@ body {
   top: 43%;
   /*margin-right: 50%;*/
 }
+.btn , .form-control, .panel, #modalContent{
+  border-radius: 0%;
+}
+.form-horizontal {
+  padding: 0px 10px 0px 10px;
+}
+#maskforloading {
+  height: 100%;
+  width:100%;
+}
+
+
 
 

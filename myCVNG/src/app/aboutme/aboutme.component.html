@@ -18,11 +18,16 @@
             <li  class="technicalli"><strong>Etudes Supérieures à : </strong><a href="http://www.isetb.rnu.tn/" target="_blank">I.S.E.T Bizerte</a></li>
             <li class="technicalli"><strong>Formations : </strong>
             <ul id="listofformations">
-                <li data-toggle="modal" data-target="#myModal"  *ngFor="let formation of formations"
+              <ng-container *ngFor="let formation of formations">
+                <li data-toggle="modal" data-target="#myModal"  *ngIf="!isDocument(formation.name)"
                     id="{{formation.proofDocument}}"
                      class="technicalli btnmodalshowwithformation {{formation.name}}">
                     {{formation.description}}
                 </li>
+                <li *ngIf="isDocument(formation.name)">
+                    <a target="_blank" [href]="formation.proofDocument | safe: 'resourceUrl'" download> {{formation.description}} (telecharger le PDF)</a>
+                </li>
+              </ng-container>
           </ul>
           </li>
           </ul>

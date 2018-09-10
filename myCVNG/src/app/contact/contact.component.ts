@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
-import { Subscription } from '../../../node_modules/rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
 import { MyInformations } from '../models/myinformations';
 import { MyInformationsService } from '../webservices/myinformations.service';
-import { FormGroup, FormBuilder, RequiredValidator, Validators } from '../../../node_modules/@angular/forms';
+import { FormGroup, FormBuilder, RequiredValidator, Validators } from '@angular/forms';
 import { EmailModel } from '../models/email';
 declare const $: any;
 
@@ -61,7 +61,6 @@ export class ContactComponent implements OnInit, OnDestroy {
   subscribeToMyInfosService() {
     this.myInfosSub = this.myInfosService.myInformationsSub.subscribe(
       (emittedData: MyInformations) => {
-        console.log("meeeeeerde");
         this.myInfos = emittedData;
       }
     );
@@ -77,9 +76,11 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   onSubmitEmailForm () {
     $('#submitbutton').attr('disabled', true);
+    $("#maskforloading").fadeIn(10);
     const formValue = this.emailForm.value;
     const email = new EmailModel(formValue["emailAddress"], formValue["emailContent"], formValue['emailSubject']);
     this.myInfosService.sendEmail(email).then((data: boolean) => {
+      $("#maskforloading").fadeOut(10);
       if (data) {
         setTimeout(() => {
           $('#submitbutton').attr('disabled', false);

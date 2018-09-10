@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, OnDestroy, AfterViewInit } from '@angular/core';
 import { CVImageService } from '../webservices/cvimage.service';
-import { Subscription } from '../../../node_modules/rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
 import { CVImage } from '../models/cvimage';
 import { ImageType, API_URL } from '../commontasks/imagetype.enum';
 import { MyInformationsService } from '../webservices/myinformations.service';
 import { MyInformations } from '../models/myinformations';
 import { FormationService } from '../webservices/formations.service';
 import { Formation } from '../models/formation';
-declare var $: any;
+declare const $: any;
 @Component({
   selector: "app-aboutme",
   templateUrl: "./aboutme.component.html",
@@ -65,8 +65,11 @@ export class AboutmeComponent implements OnInit, OnDestroy, AfterViewInit {
   subscribeToImageService() {
     this.imageServiceSub = this.imageService.myImageSubject.subscribe(
       (emittedData: CVImage) => {
+        $("#maskforloading").fadeOut(600);
         this.urlMyPicture = emittedData.src;
         this.meBigPicture = emittedData;
+      }, (error) => {
+        $("#maskforloading").fadeOut(600);
       }
     );
   }
@@ -99,5 +102,13 @@ export class AboutmeComponent implements OnInit, OnDestroy, AfterViewInit {
       $("#linkmymodalheadertext").attr("href", API_URL + "/images/" + name);
       $('#modaltargetappend').append(img);
     });
+  }
+
+  isDocument(name: string): boolean {
+    const ext = name.substr(name.lastIndexOf('.') + 1);
+    if (ext === 'pdf' || ext === 'PDF') {
+      return true;
+    }
+    return false;
   }
 }

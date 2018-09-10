@@ -25,13 +25,14 @@ public class ImageController {
         CVImage image=null;
         if(type == ImageType.NAVBAR_LOGO) {
             System.err.println("we are in the logo picture");
-             image = this.imageService.getLogoImage();
+            image = this.imageService.getLogoImage();
         }else if(type == ImageType.ME_BIG_PICTURE){
             System.err.println("we are in the me big picture");
-             image = this.imageService.getMyBigPicture();
+            image = this.imageService.getMyBigPicture();
         }
         return new ResponseEntity<CVImage>(image, HttpStatus.OK);
     }
+
     @GetMapping("/certifications")
     public ResponseEntity<List<CVImage>> getAllCertifications() {
         List<CVImage> certifictions= new LinkedList<>();

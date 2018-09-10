@@ -1,0 +1,18 @@
+.form-control, button {
+    width:100%;
+    border-radius: 0%;
+}
+#loginImage {
+    height:100%;
+    width:100%;
+}
+#container {
+    margin-top:100px;
+}
+#loginFullElement{
+    padding:15px;
+    border: solid 1px lightgrey;
+    -webkit-box-shadow: 0px 6px 34px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 6px 34px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 6px 34px -3px rgba(0, 0, 0, 0.75);
+}

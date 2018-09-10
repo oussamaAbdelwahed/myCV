@@ -1,3 +1,29 @@
-<p>
-  login works!
-</p>
+<div class="container" id="container">
+  <div class="row">
+    <div id="loginFullElement" class="col-xs-offset-1 col-xs-10 col-xs-offset-1 col-lg-offset-4 col-lg-4 col-lg-offset-4">
+      <a class="btn btn-primary" routerLink="">page d'accueil</a>
+      <div class="col-xs-12 col-lg-offset-2 col-lg-8 col-lg-offset-2">
+        <img id="loginImage" src="assets/images/login.png" />
+      </div>
+      <form [formGroup]="formLogin" class="form-horizontal col-xs-12 col-lg-12" id="formLogin" (ngSubmit)="onSubmitLogin()">
+        <hr style="color:grey;background-color:grey;"><br>
+         <div class="form-group">
+            <label for="email"><i class="kk  kk-at"></i> Email : </label>
+            <input type="email"  formControlName="email" class="form-control" id="email"/>
+            <span class="text-danger" *ngIf="formLogin.controls.email.touched && formLogin.controls.email.invalid">email invalide</span>
+         </div>
+         <div class="form-group">
+            <label for="password"><i class="kk kk-Key "></i> Password : </label>
+            <input type="password" id="password" formControlName="password" class="form-control"/>
+            <span class="text-danger" *ngIf="formLogin.controls.password.touched && formLogin.controls.password.invalid">veuillez saisir le mot de passe</span>
+          </div>
+         <div class="form-group">
+            <button type="submit" id="loginButton" class="btn btn-primary" [disabled]="formLogin.invalid">Login</button>
+         </div>
+         <div class="form-group">
+        <span class="text-danger">{{error}}</span>
+         </div>
+       </form>
+    </div>
+  </div>
+</div>

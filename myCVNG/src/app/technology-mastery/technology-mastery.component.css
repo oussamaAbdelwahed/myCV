@@ -41,10 +41,28 @@
  -webkit-border-radius: 42px 41px 41px 40px;
  
 }
+.techContainer {
+    border-radius: 100%;
+    display:flex;
+    border:solid 1px white;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: border;
+    transition-duration: 0.5s;
+    transition-delay: 0.1s;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.techContainer:hover {
+   border: solid 1px grey;
+}
+
 .techimageuri {
     height: 80px;
     width: 80px;
 }
+
 .smalltechlevel {
     text-align: center;
     color: white;

@@ -9,8 +9,8 @@ import java.util.Base64;
 @Entity
 @Table(name="mastered_technologies")
 public class Technology {
-    @Id
-    @GeneratedValue
+  @Id
+  @GeneratedValue(strategy= GenerationType.AUTO)
   private long id;
   @Lob
   @JsonIgnore

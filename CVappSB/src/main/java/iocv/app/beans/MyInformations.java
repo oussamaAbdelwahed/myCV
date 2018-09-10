@@ -9,7 +9,7 @@ import java.util.Date;
 @Table(name="my_informations")
 public class MyInformations {
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy= GenerationType.AUTO)
   private long id;
   private String tel;
   private String email;

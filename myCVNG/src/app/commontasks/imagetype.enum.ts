@@ -4,7 +4,7 @@ export enum ImageType {
     CERTIFICATION = 'CERTIFICATION'
 }
 export enum FormationType {
-    DIPLOMA,
-    CERTIFICATION
+    DIPLOMA = 'DIPLOMA',
+    INTERNSHIP_ATTESTATION = 'INTERNSHIP_ATTESTATION'
 }
-export const API_URL = 'http://localhost:8080';
+export const API_URL = 'https://oussama-abdelwahed-cv.herokuapp.com';

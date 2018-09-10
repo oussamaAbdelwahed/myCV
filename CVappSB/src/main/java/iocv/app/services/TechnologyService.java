@@ -19,4 +19,51 @@ public class TechnologyService {
         }catch(Exception e) {}
         return list;
     }
+
+
+   public Technology getOneById(Long id) {
+     try{
+       return this.techRepo.findById(id).get();
+     }catch (Exception e) {
+       e.printStackTrace();
+       return null;
+     }
+   }
+
+   public boolean saveTechnology(Technology tech) {
+     try{
+       this.techRepo.save(tech);
+       return true;
+     }catch (Exception e) {
+       e.printStackTrace();
+       return false;
+     }
+   }
+
+   public boolean updateTechnology(Technology tech, boolean withImage) {
+        try {
+            if (withImage) {
+                this.techRepo.updateTechnology(tech.getName(), tech.getLevel(), tech.getTechnology(), tech.getId());
+            } else {
+                this.techRepo.updateTechnologyPlainText(tech.getName(), tech.getLevel(), tech.getId());
+            }
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return  false;
+        }
+   }
+
+
+    public boolean deleteTechnology(Long id) {
+        try{
+            this.techRepo.deleteById(id);
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 }

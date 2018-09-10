@@ -14,7 +14,7 @@ import java.util.Collection;
 @Table(name = "admins")
 public class Admin implements UserDetails{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     @Column(name = "first_name")
     private String firstName;
@@ -41,6 +41,17 @@ public class Admin implements UserDetails{
 
     public String getEmail() {
         return email;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
     public void setEmail(String email) {
@@ -70,10 +81,10 @@ public class Admin implements UserDetails{
     }
 
     @Override
+    //@JsonIgnore
     public String getPassword() {
         return this.password;
     }
-
     @Override
     public String getUsername() {
         return this.email;

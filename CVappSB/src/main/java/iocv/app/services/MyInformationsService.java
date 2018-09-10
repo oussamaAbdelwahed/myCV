@@ -7,6 +7,8 @@ import iocv.app.repositories.MyInformationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MyInformationsService {
     @Autowired
@@ -28,5 +30,24 @@ public class MyInformationsService {
         }catch(Exception e) {
             return false;
         }
+    }
+
+    /*public MyInformations getCurrentInformations() {
+      try{
+        return  this.myInformationsRepository.findByCurrent(true);
+      }catch (Exception e) {
+        e.printStackTrace();
+        return null;
+      }
+    }*/
+
+    public boolean updateMyInformations(MyInformations infos) {
+     try{
+         this.myInformationsRepository.updateMyInforations(infos.getTel(), infos.getEmail(), infos.getAddress(), infos.getZip(), infos.getParagraphe(),infos.getCurrent(), infos.getId());
+       return true;
+     }catch (Exception e) {
+         e.printStackTrace();
+         return false;
+     }
     }
 }

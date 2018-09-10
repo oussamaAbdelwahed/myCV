@@ -1,0 +1,28 @@
+<div class="row">
+  <section class="col-xs-12 col-lg-offset-3 col-lg-6 col-lg-offset-3" style="margin-top:60px;">
+    <h1 style="margin-bottom:40px;" class="text-center">Tous Les Technologies Maitrisées</h1>
+    <div class="row" *ngFor="let tech of technologies" id="teche{{tech.id}}">
+      <!-- -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h5 class="text-center">{{tech.name}}</h5>
+        </div>
+        <div class="panel-body">
+          <table border="2">
+            <img class="managed-technology" [src]="tech.technology | safe: 'resourceUrl'" [alt]="tech.name" />
+          </table>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-xs-6">
+              <button routerLink="/admin/dashboard/technologies/{{tech.id}}/edit" class="btn btn-warning pull-right" id="edit-navbar-logo">modifier</button>
+            </div>
+            <div class="col-xs-6">
+              <button class="btn btn-danger" (click)="showModal(tech.id)" id="delete-technology">supprimer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

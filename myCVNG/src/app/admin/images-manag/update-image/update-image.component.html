@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="section" class="col-xs-12 col-lg-offset-3 col-lg-6 col-lg-offset-3" style="margin-top:60px;">
+    <h1 class="text-center" style="margin-bottom:20px;">Modifier Une Image</h1>  
+    <form (ngSubmit)="onSubmit()" style="margin-left:15px;margin-right:15px;" [formGroup]="updateForm" class="form form-horizontal">
+         <div class="form-group">
+           <label for="image">image</label>
+           <div style="height:200px;width:200px;">
+             <img id="formCertifImage" style="height:200px;width:200px;" [src]="image?.src | safe: 'resourceUrl'"/> 
+           </div>
+           <input (change)="onChangeFile($event)" formControlName="image" class="form-control" type="file" name="image" id="image"/>
+         </div>
+         <div class="form-group">
+             <label for="show">show</label>
+             <input formControlName="show" type="number" min="0" max="1" class="form-control" id="show"/>
+         </div>
+         <div class="form-group">
+           <label for="alt">alt</label>
+           <input formControlName="alt" type="text" id="alt" class="form-control"/>
+         </div>
+         <div class="form-group">
+           <label for="description">description</label>
+           <textarea formControlName="description" rows="8" class="form-control"></textarea>
+         </div>
+         <div class="form-group">
+           <button  type="submit" [disabled]="updateForm.invalid" class="btn btn-success" id="submitButton">valider</button>
+         </div>
+         <div class="form-group">
+           <p class="text-danger">{{message}}</p>
+         </div>
+      </form>
+  </div>
+</div>

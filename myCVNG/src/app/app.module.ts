@@ -1,23 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AboutmeComponent } from './aboutme/aboutme.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './admin/login/login.component';
 import { CVImageService } from './webservices/cvimage.service';
-import { HttpClient, HttpClientModule } from '../../node_modules/@angular/common/http';
-import { SafePipe } from './safe.pipe';
+import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MyInformationsService } from './webservices/myinformations.service';
 import { FormationService } from './webservices/formations.service';
-import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { TechnologyMasteryComponent } from './technology-mastery/technology-mastery.component';
 import { TechnologyService } from './webservices/technology.service';
-
+import { ClientViewComponent } from './client-view/client-view.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { SharedModule } from './shared-modules/shared.module';
+import { CredentialsInterceptor } from './admin/middlewares/credentials.interceptor';
+import { LocalStorageService } from './webservices/localstorage.service';
 
 @NgModule({
   declarations: [
@@ -27,23 +27,29 @@ import { TechnologyService } from './webservices/technology.service';
     SkillsComponent,
     ContactComponent,
     FooterComponent,
-    LoginComponent,
-    SafePipe,
-    TechnologyMasteryComponent
+    TechnologyMasteryComponent,
+    ClientViewComponent,
+    NotFoundComponent
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, HttpClientModule],
   providers: [
     HttpClient,
     CVImageService,
     MyInformationsService,
     FormationService,
-    TechnologyService
+    LocalStorageService,
+    TechnologyService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CredentialsInterceptor,
+      multi: true
+    }
   ],
+  exports: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    console.log("AppModule");
+  }
+}

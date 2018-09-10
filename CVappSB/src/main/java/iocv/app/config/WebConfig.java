@@ -1,5 +1,6 @@
 package iocv.app.config;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
@@ -13,9 +14,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.cors.CorsConfiguration;
+
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
+import javax.servlet.Filter;
+
 
 @Configurable
 @Configuration
@@ -30,25 +35,30 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     // be in a database, LDAP or in memory.
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(appUserDetailsService);
+        auth.userDetailsService(appUserDetailsService).passwordEncoder(this.encoder());
     }
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
-    // this configuration allow the client app to access the this api
-    // all the domain that consume this api must be included in the allowed o'rings
-   /* @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurerAdapter() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:4200","http://localhost");
+    @Bean
+    public CorsFilter corsFilter() {
+        System.out.println("***************CORS Config******************");
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true); // you USUALLY want this
+        // likely you should limit this to specific origins
+        config.addAllowedOrigin("http://localhost:4200");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("GET");config.addAllowedMethod("POST");config.addAllowedMethod("OPTIONS");
+        config.setMaxAge(3600L);
+        source.registerCorsConfiguration("/admin/*", config);
+        // kent hakka/**
 
-            }
-        };
-    }*/
+        return new CorsFilter(source);
+    }
+
 
     // This method is for overriding some configuration of the WebSecurity
     // If you want to ignore some request or request patterns then you can
@@ -62,15 +72,16 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     // We can specify our authorization criteria inside this method.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        System.err.println("*************************************** Spring security Configuration (Authentification/CORS/CSRF) ***************************************");
         http.cors().and()
                 // starts authorizing configurations
                 .authorizeRequests()
                 // ignoring the guest's urls "
-                .antMatchers( "/static/*","/images/*","/account/login", "/logout","/cvimages/*","/myinformations/*","/myformations/*","/tech/*").permitAll()
+                .antMatchers( "/**","/static/*","/images/*","/views/*","/account/login","/cvimages/*","/myinformations/*","/myformations/*","/tech/*").permitAll()
                 // authenticate all remaining URLS
                 .anyRequest().fullyAuthenticated().and()
-      /* "/logout" will log the user out by invalidating the HTTP Session,
-       * cleaning up any {link rememberMe()} authentication that was configured, */
+                /* "/logout" will log the user out by invalidating the HTTP Session,
+                * cleaning up any {link rememberMe()} authentication that was configured, */
                 .logout()
                 .permitAll()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
@@ -81,6 +92,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).and()
                 // disabling the CSRF - Cross Site Request Forgery
                 .csrf().disable();
+
     }
     @Bean
     public BCryptPasswordEncoder encoder(){

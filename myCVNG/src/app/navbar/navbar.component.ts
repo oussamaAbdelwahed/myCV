@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { Subscription } from '../../../node_modules/rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
 import { CVImage } from '../models/cvimage';
 import { CVImageService } from '../webservices/cvimage.service';
 import { ImageType } from '../commontasks/imagetype.enum';
@@ -16,7 +16,8 @@ export class NavbarComponent implements OnInit, OnDestroy, AfterViewInit {
   public logo;
   public logoImageUrl;
 
-  constructor(public cvImageService: CVImageService) {}
+  constructor(public cvImageService: CVImageService) {
+  }
 
   ngOnInit() {
     this.subscribeToCVImageService();
